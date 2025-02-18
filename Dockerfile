@@ -1,7 +1,11 @@
 FROM --platform=linux/amd64 node:18 AS builder
 WORKDIR /app
-COPY package.json .
-RUN npm install
+
+# Copy both package files
+COPY package*.json ./
+
+# Use npm ci for more reliable builds
+RUN npm ci
 
 # (Optional) Update browserslist DB to avoid warnings
 RUN npx browserslist@latest --update-db
