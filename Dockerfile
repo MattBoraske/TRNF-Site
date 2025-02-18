@@ -1,10 +1,18 @@
-FROM node:22 as builder
+FROM --platform=linux/amd64 node:18 AS builder
 WORKDIR /app
 COPY package.json .
 RUN npm install
+
+# (Optional) Update browserslist DB to avoid warnings
+RUN npx browserslist@latest --update-db
+
 COPY . .
 RUN npm run build
 
-FROM nginx 
+FROM --platform=linux/amd64 nginx
 EXPOSE 80
+
+# Add custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 COPY --from=builder /app/build /usr/share/nginx/html
