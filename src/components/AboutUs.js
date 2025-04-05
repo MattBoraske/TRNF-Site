@@ -94,7 +94,7 @@ const AboutUs = () => {
           {/* Other Text Content */}
           <div>
             <p className="my-3 text-base md:text-lg lg:text-xl text-gray-600 font-semibold">
-              We guide riders through a comprehensive program of warm-ups, riding skills, horse care, and
+              TRNF guides riders through a comprehensive program of warm-ups, riding skills, horse care, and
               fun activities in a safe, indoor arena setting.
             </p>
             <p className="my-3 text-base md:text-lg lg:text-xl text-gray-600 font-semibold">
